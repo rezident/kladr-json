@@ -1,6 +1,7 @@
 {
     "require": {
-        "hisamu/php-xbase": "dev-master"
+        "hisamu/php-xbase": "dev-master",
+        "phpunit/phpunit": "^4.8"
     },
     "autoload": {
         "psr-4": {
