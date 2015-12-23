@@ -1,7 +1,6 @@
 <?php
 
-namespace classes;
-
+namespace rezident\KladrJson\exceptions;
 
 use Exception;
 

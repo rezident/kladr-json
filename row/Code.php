@@ -1,6 +1,6 @@
 <?php
 
-namespace classes;
+namespace rezident\KladrJson\row;
 
 
 class Code
