@@ -1,0 +1,10 @@
+{
+    "require": {
+        "hisamu/php-xbase": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "rezident\\KladrJson\\": ""
+        }
+    }
+}
