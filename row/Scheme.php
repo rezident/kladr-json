@@ -2,7 +2,7 @@
 
 namespace rezident\KladrJson\row;
 
-class RowScheme
+class Scheme
 {
     /**
      * Имя

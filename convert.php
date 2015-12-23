@@ -4,5 +4,10 @@ use rezident\KladrJson\Application;
 
 require 'vendor/autoload.php';
 
-(new Application())->run();
+try {
+    (new Application())->run();
+} catch(Exception $e) {
+    $reflection = new ReflectionClass($e);
+    echo ($reflection->getShortName() . ': ' . $e->getMessage()) . PHP_EOL;
+}
 
