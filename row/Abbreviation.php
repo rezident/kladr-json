@@ -17,6 +17,11 @@ class Abbreviation
      */
     private $suffix;
 
+    /**
+     * @var string
+     */
+    private $abbr;
+
     private $map = [
         'г'         => ['г.',   ''],
         'р-н'       => ['',     'район']
@@ -30,6 +35,7 @@ class Abbreviation
 
         $this->prefix = $this->map[$abbr][0];
         $this->suffix = $this->map[$abbr][1];
+        $this->abbr = $abbr;
     }
 
     public function getWrappedName($name)
@@ -37,4 +43,14 @@ class Abbreviation
         $name = ' ' . trim($name) . ' ';
         return trim($this->prefix . $name . $this->suffix);
     }
+
+    /**
+     * @return string
+     */
+    public function getAbbr()
+    {
+        return $this->abbr;
+    }
+
+
 }
