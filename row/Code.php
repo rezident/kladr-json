@@ -45,4 +45,10 @@ class Code
     {
         return $this->status == 0;
     }
+
+    public function getLevel()
+    {
+        $level = !!$this->district + !!$this->city + !!$this->locality;
+        return $level;
+    }
 }
