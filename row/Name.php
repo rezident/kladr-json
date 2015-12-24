@@ -2,6 +2,8 @@
 namespace rezident\KladrJson\row;
 
 
+use rezident\KladrJson\exceptions\EmptyNameException;
+
 class Name
 {
     /**
@@ -9,8 +11,29 @@ class Name
      */
     private $name;
 
-    public function __construct($name, $abbr)
-    {
+    /**
+     * @var Abbreviation
+     */
+    private $abbr;
 
+    /**
+     * @param string $name
+     * @param Abbreviation $abbr
+     *
+     * @throws EmptyNameException
+     */
+    public function __construct($name, Abbreviation $abbr)
+    {
+        if(empty($name)) {
+            throw new EmptyNameException();
+        }
+
+        $this->abbr = $abbr;
+        $this->name = $name;
+    }
+
+    public function __toString()
+    {
+        return $this->abbr->getWrappedName($this->name);
     }
 }
