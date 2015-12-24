@@ -41,4 +41,13 @@ class Name
     {
         return $this->abbr;
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
 }
