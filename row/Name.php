@@ -36,4 +36,9 @@ class Name
     {
         return $this->abbr->getWrappedName($this->name);
     }
+
+    public function getAbbreviation()
+    {
+        return $this->abbr;
+    }
 }

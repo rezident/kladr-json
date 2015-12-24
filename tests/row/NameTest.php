@@ -22,4 +22,11 @@ class NameTest extends \PHPUnit_Framework_TestCase
         $name = new Name('Пушкин', new Abbreviation('г'));
         $this->assertEquals('г. Пушкин', $name->__toString());
     }
+
+    public function testGetAbbreviation()
+    {
+        $abbr = new Abbreviation('г');
+        $name = new Name('Город', $abbr);
+        $this->assertEquals($abbr, $name->getAbbreviation());
+    }
 }
