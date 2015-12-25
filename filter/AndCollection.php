@@ -6,20 +6,8 @@ namespace rezident\KladrJson\filter;
 use rezident\KladrJson\row\Code;
 use rezident\KladrJson\row\Name;
 
-class Collection implements InterfaceFilter
+class AndCollection extends CollectionAbstract
 {
-    /**
-     * @var InterfaceFilter[]
-     */
-    private $filters = [];
-
-    /**
-     * @param InterfaceFilter[] $filters
-     */
-    public function __construct(array $filters)
-    {
-        $this->filters = $filters;
-    }
 
     /**
      * @param Name $name
