@@ -2,15 +2,52 @@
 
 use rezident\KladrJson\Application;
 use rezident\KladrJson\builder\Tree;
+use rezident\KladrJson\filter\Abbreviation;
 use rezident\KladrJson\filter\AndCollection;
 use rezident\KladrJson\filter\Level;
 use rezident\KladrJson\filter\Status;
 
 require 'vendor/autoload.php';
 
+$abbrFilter = new Abbreviation();
+$abbrFilter->not([
+    'снт',
+    'дп',
+    'тер',
+    'нп',
+    'рзд',
+    'казарма',
+    'мкр',
+    'промзона',
+    'ж/д_будка',
+    'п/ст',
+    'ж/д_оп',
+    'кв-л',
+    'ж/д_рзд',
+    'ж/д_ст',
+    'городок',
+    'автодорога',
+    'п/о',
+    'с/мо',
+    'ж/д_казарм',
+    'массив',
+    'ж/д_платф',
+    'ж/д_пост',
+    'погост',
+    'жилзона',
+    'п/р',
+    'ш',
+    'км',
+    'днп',
+    'лпх',
+    'округ',
+    'ул',
+]);
+
 $filter = new AndCollection([
     new Status(),
-    new Level([0, 1])
+    new Level([0, 1]),
+    $abbrFilter
 ]);
 $builder = new Tree();
 

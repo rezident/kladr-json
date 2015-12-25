@@ -21,6 +21,7 @@ class Application
         $table = new Table('files/KLADR.DBF', null, 'CP866');
 
         $lookOnlyAbbr = false;
+        $errors = 0;
         /** @var Scheme $row */
         while($row = $table->nextRecord()) {
             if($lookOnlyAbbr && $row->socr != $lookOnlyAbbr) {
@@ -36,10 +37,14 @@ class Application
                 }
             } catch (UnknownAbbrException $e) {
                 $lookOnlyAbbr = $row->socr;
+                $errors++;
                 echo $row->code . ' ' . $row->socr . ' ' . $row->name . PHP_EOL;
             }
 
+        }
 
+        if($errors) {
+            echo 'Total items: ' . $errors . PHP_EOL;
         }
     }
 }
