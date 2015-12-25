@@ -22,19 +22,19 @@ class Abbreviation
      */
     private $abbr;
 
-    private $map = [
+    static public $map = [
         'г'         => ['г.',   ''],
         'р-н'       => ['',     'район']
     ];
 
     public function __construct($abbr)
     {
-        if(isset($this->map[$abbr]) == false) {
+        if(isset(self::$map[$abbr]) == false) {
             throw new UnknownAbbrException($abbr);
         }
 
-        $this->prefix = $this->map[$abbr][0];
-        $this->suffix = $this->map[$abbr][1];
+        $this->prefix = self::$map[$abbr][0];
+        $this->suffix = self::$map[$abbr][1];
         $this->abbr = $abbr;
     }
 
