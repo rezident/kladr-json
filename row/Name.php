@@ -24,12 +24,12 @@ class Name
      */
     public function __construct($name, Abbreviation $abbr)
     {
-        if(empty($name)) {
+        $this->name = trim($name);
+        if(empty($this->name)) {
             throw new EmptyNameException();
         }
 
         $this->abbr = $abbr;
-        $this->name = $name;
     }
 
     public function __toString()

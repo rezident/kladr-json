@@ -18,4 +18,9 @@ abstract class CollectionAbstract implements InterfaceFilter
         $this->filters = $filters;
     }
 
+    public function add(InterfaceFilter $filter)
+    {
+        $this->filters[] = $filter;
+    }
+
 }

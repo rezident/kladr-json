@@ -8,7 +8,9 @@ use rezident\KladrJson\row\Name;
 
 class Tree extends AbstractBuilder
 {
-    public function buildPart(Name $name, Code $code) {
+    private $tree = [];
 
+    public function buildPart(Name $name, Code $code) {
+        echo $name->getName() . PHP_EOL;
     }
 }
