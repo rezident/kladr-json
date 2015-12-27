@@ -193,10 +193,14 @@ class Tree extends AbstractBuilder
 
             /** @var Name $toName */
             /** @var Name $fromName */
+            /** @var Code $toCode */
+            /** @var Code $fromCode */
             $toName = $this->tree[$to]['name'];
             $fromName = $this->tree[$from]['name'];
+            $toCode = $this->tree[$to]['code'];
+            $fromCode = $this->tree[$from]['code'];
             $this->tree[$to]['name'] = new Name($toName->getName() . ' и ' . $fromName->__toString(), $toName->getAbbreviation());
-
+            $toCode->region = [$toCode->region, $fromCode->region];
             unset($this->tree[$from]);
         }
     }
