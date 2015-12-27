@@ -12,7 +12,7 @@ abstract class AbstractBuilder
 
     public function getAsJson()
     {
-        return json_encode($this->data, JSON_PRETTY_PRINT);
+        return json_encode($this->data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     }
 
     abstract public function buildPart(Name $name, Code $code);

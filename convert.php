@@ -46,7 +46,7 @@ $abbrFilter->not([
 
 $filter = new AndCollection([
     new Status(),
-    new Level([0, 1]),
+    new Level(0),
     $abbrFilter
 ]);
 $builder = new Tree();

@@ -64,9 +64,49 @@ class Tree extends AbstractBuilder
     {
         $this->merge();
         $this->sort();
+        $this->data = $this->getImportTree($this->tree);
         return parent::getAsJson();
     }
 
+    private function getImportTree($branch)
+    {
+        $importTree = [];
+        foreach($branch as $leaf) {
+            if(isset($leaf['name'])) {
+                /** @var Name $name */
+                /** @var Code $code */
+                $name = $leaf['name'];
+                $code = $leaf['code'];
+                $item = [
+                    'name' => $name->__toString(),
+                    'region' => $code->region
+                ];
+
+                if($code->district) {
+                    $item['district'] = $code->district;
+                }
+                if($code->city) {
+                    $item['city'] = $code->city;
+                }
+                if($code->locality) {
+                    $item['locality'] = $code->locality;
+                }
+
+                $districts = (isset($leaf['district'])) ? $this->getImportTree($leaf['district']) : [];
+                $cities = (isset($leaf['city'])) ? $this->getImportTree($leaf['city']) : [];
+                $localities = (isset($leaf['locality'])) ? $this->getImportTree($leaf['locality']) : [];
+                $children = array_merge($cities, $districts, $localities);
+                if(count($children)) {
+                    $item['children'] = $children;
+                }
+
+                $importTree[] = $item;
+            }
+
+        }
+
+        return $importTree;
+    }
     private function sort()
     {
         $sortFunction = function(array $a, array $b) {
