@@ -183,13 +183,19 @@ class Tree extends AbstractBuilder
             }
             $this->tree[$to]['city'] = array_merge($this->tree[$to]['city'], $this->tree[$from]['city']);
 
-            if(isset($this->tree[$from]['city']) == false) {
+            if(isset($this->tree[$from]['locality']) == false) {
                 $this->tree[$from]['locality'] = [];
             }
             if(isset($this->tree[$to]['locality']) == false) {
                 $this->tree[$to]['locality'] = [];
             }
             $this->tree[$to]['locality'] = array_merge($this->tree[$to]['locality'], $this->tree[$from]['locality']);
+
+            /** @var Name $toName */
+            /** @var Name $fromName */
+            $toName = $this->tree[$to]['name'];
+            $fromName = $this->tree[$from]['name'];
+            $this->tree[$to]['name'] = new Name($toName->getName() . ' и ' . $fromName->__toString(), $toName->getAbbreviation());
 
             unset($this->tree[$from]);
         }
