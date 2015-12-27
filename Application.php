@@ -46,5 +46,7 @@ class Application
         if($errors) {
             echo 'Total items: ' . $errors . PHP_EOL;
         }
+
+        echo $builder->getAsJson();
     }
 }
