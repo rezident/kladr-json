@@ -91,6 +91,7 @@ class Tree extends AbstractBuilder
                 if($code->locality) {
                     $item['locality'] = $code->locality;
                 }
+                $item['letter'] = mb_substr(mb_strtoupper($name->getName()), 0, 1);
 
                 $districts = (isset($leaf['district'])) ? $this->getImportTree($leaf['district']) : [];
                 $cities = (isset($leaf['city'])) ? $this->getImportTree($leaf['city']) : [];
